@@ -12,9 +12,8 @@
         vr-mode-ui="enabled: false;"
         loading-screen="enabled: false;"
         renderer="logarithmicDepthBuffer: true;"
-        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-        id="scene"
         embedded
+        arjs="sourceType: webcam; debugUIEnabled: false;"  <!-- Важный параметр для работы камеры -->
         gesture-detector
     >
         <a-assets>
@@ -24,7 +23,7 @@
             ></a-asset-item>
         </a-assets>
 
-      
+        <!-- Самосветящаяся модель с жестами -->
         <a-entity
             id="glowing-model"
             position="0 0 -5"
@@ -32,7 +31,7 @@
             animation-mixer="loop: repeat"
             gltf-model="#animated-asset"
             material="emissive: #00FF00; emissiveIntensity: 1.5;"  <!-- Самосвечение (зелёный цвет) -->
-            gesture-handler="minScale: 0.5; maxScale: 3; rotateFactor: 2" 
+            gesture-handler="minScale: 0.5; maxScale: 3; rotateFactor: 2"  <!-- Жесты для вращения и масштабирования -->
         ></a-entity>
 
         <a-entity camera></a-entity>
