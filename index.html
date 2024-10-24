@@ -35,14 +35,14 @@
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
             >
+                <!-- Модель с поддержкой жестов вращения и увеличения -->
                 <a-entity
                     id="bowser-model"
                     scale="0.9 0.9 0.9"
-                    rotation="+90"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
                     class="clickable"
-                    gesture-handler
+                    gesture-handler="minScale: 0.5; maxScale: 3; rotateFactor: 2"
                 ></a-entity>
             </a-marker>
 
@@ -50,3 +50,4 @@
         </a-scene>
     </body>
 </html>
+
