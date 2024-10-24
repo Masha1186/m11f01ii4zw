@@ -1,40 +1,29 @@
-<!doctype html>
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Test</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe-ar.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-</head>
-
-<body style="margin: 0; overflow: hidden;">
+  </head>
+  <body style="margin: 0; overflow: hidden;">
     <a-scene
-        vr-mode-ui="enabled: false;"
-        embedded
-        arjs="sourceType: webcam; debugUIEnabled: false;"
-        gesture-detector
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+      vr-mode-ui="enabled: false;"
     >
-        <a-assets>
-            <a-asset-item
-                id="animated-asset"
-                src="assets/asset.glb"
-            ></a-asset-item>
-        </a-assets>
+      <!-- Добавим простой примитивный объект, чтобы убедиться, что сцена загружается -->
+      <a-box 
+        position="0 0.5 -3" 
+        material="color: red; emissive: #FF0000; emissiveIntensity: 1.5;"
+        scale="1 1 1">
+      </a-box>
 
-        <!-- Модель с самосвечением и жестами -->
-        <a-entity
-            id="glowing-model"
-            position="0 0 -5"
-            scale="1 1 1"
-            animation-mixer="loop: repeat"
-            gltf-model="#animated-asset"
-            material="emissive: #00FF00; emissiveIntensity: 1.5;"
-            gesture-handler="minScale: 0.5; maxScale: 3; rotateFactor: 2;"  <!-- Закрываем правильно -->
-        ></a-entity>
-
-        <a-entity camera></a-entity>
+      <!-- Камера для AR -->
+      <a-entity camera></a-entity>
     </a-scene>
-</body>
+  </body>
 </html>
 
 
