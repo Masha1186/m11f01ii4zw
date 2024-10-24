@@ -4,16 +4,18 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe-ar.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
     <a-scene
         vr-mode-ui="enabled: false;"
         loading-screen="enabled: false;"
-        renderer="logarithmicDepthBuffer: true; shadowMapEnabled: true;"  <!-- Включаем тени -->
+        renderer="logarithmicDepthBuffer: true;"
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
         id="scene"
         embedded
+        gesture-detector
     >
         <a-assets>
             <a-asset-item
@@ -22,26 +24,19 @@
             ></a-asset-item>
         </a-assets>
 
-        <!-- Направленный свет -->
-        <a-light type="directional" position="1 1 0.5" intensity="0.8" castShadow="true"></a-light>
-        <!-- Общее освещение -->
-        <a-light type="ambient" intensity="0.5"></a-light>
-
-        <!-- Свободно размещённая самосветящаяся модель -->
+      
         <a-entity
-            id="free-model"
+            id="glowing-model"
             position="0 0 -5"
-            scale="0.9 0.9 0.9"
+            scale="1 1 1"
             animation-mixer="loop: repeat"
             gltf-model="#animated-asset"
-            material="emissive: #FF0000; emissiveIntensity: 1;"  <!-- Добавляем эффект самосвечения -->
-            shadow="cast: true; receive: true"
+            material="emissive: #00FF00; emissiveIntensity: 1.5;"  <!-- Самосвечение (зелёный цвет) -->
+            gesture-handler="minScale: 0.5; maxScale: 3; rotateFactor: 2" 
         ></a-entity>
 
-        <!-- Плоскость, на которую будет падать тень -->
-        <a-plane rotation="-90 0 0" width="10" height="10" color="#CCC" shadow="receive: true"></a-plane>
-
-        <a-entity camera position="0 1.6 0" shadow="cast: true"></a-entity>
+        <a-entity camera></a-entity>
     </a-scene>
 </body>
 </html>
+
