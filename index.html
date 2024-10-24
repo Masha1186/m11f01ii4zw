@@ -25,12 +25,12 @@
         <!-- Основная модель с самосвечением -->
         <a-entity
             id="bowser-model"
-            position="0 0 -2"  <!-- Позиция модели (высота от земли) -->
+            position="0 0 -2"  <!-- Позиция модели перед камерой -->
             scale="0.9 0.9 0.9"
-            animation-mixer="loop: repeat"
             gltf-model="#animated-asset"  <!-- Ссылка на загруженную модель -->
-            material="color: pink; emissive: pink; emissiveIntensity: 1" <!-- Эффект самосвечения -->
-            animation="property: scale; to: 1 1 1; dur: 500; dir: alternate; loop: true; easing: easeInOutSine"
+            material="color: pink; emissive: pink; emissiveIntensity: 1"  <!-- Эффект самосвечения -->
+            animation-mixer="loop: repeat"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; dir: alternate; loop: true; easing: easeInOutSine"
         >
             <a-animation
                 attribute="material.emissive"
@@ -46,3 +46,4 @@
     </a-scene>
 </body>
 </html>
+
