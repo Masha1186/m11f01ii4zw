@@ -11,7 +11,7 @@
     <a-scene
         vr-mode-ui="enabled: false;"
         embedded
-        arjs="sourceType: webcam; debugUIEnabled: false;" <!-- Включение AR.js для работы камеры -->
+        arjs="sourceType: webcam; debugUIEnabled: false;"
         gesture-detector
     >
         <a-assets>
@@ -28,15 +28,13 @@
             scale="1 1 1"
             animation-mixer="loop: repeat"
             gltf-model="#animated-asset"
-            material="emissive: #00FF00; emissiveIntensity: 1.5;"  <!-- Самосвечение (зелёный цвет) -->
-            gesture-handler="minScale: 0.5; maxScale: 3; rotateFactor: 2"  <!-- Жесты для вращения и масштабирования -->
+            material="emissive: #00FF00; emissiveIntensity: 1.5;"
+            gesture-handler="minScale: 0.5; maxScale: 3; rotateFactor: 2;"  <!-- Закрываем правильно -->
         ></a-entity>
 
-        <!-- Камера для AR -->
         <a-entity camera></a-entity>
     </a-scene>
 </body>
 </html>
-
 
 
