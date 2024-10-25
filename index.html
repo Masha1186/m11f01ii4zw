@@ -3,26 +3,32 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebAR Test</title>
+    <title>WebAR with Marker</title>
+    <!-- Подключаем A-Frame -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- Подключаем AR.js для работы с маркерами -->
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
+    <!-- Сцена A-Frame -->
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-      <!-- Assets (GLB model) -->
+      <!-- Assets для 3D модели -->
       <a-assets>
         <a-asset-item id="3d-model" src="assets/asset.glb"></a-asset-item>
       </a-assets>
 
-      <!-- 3D Model Entity -->
-      <a-entity 
-        gltf-model="#3d-model" 
-        scale="0.5 0.5 0.5" 
-        position="0 0 -2"  <!-- Смещаем модель дальше от камеры -->
-        rotation="0 180 0"  <!-- Возможно, нужно повернуть модель -->
-      ></a-entity>
+      <!-- Маркер (пользуемся типом "pattern" и указываем путь к .patt файлу) -->
+      <a-marker type="pattern" url="assets/marker.patt">
+        <!-- 3D модель, которая появится при обнаружении метки -->
+        <a-entity 
+          gltf-model="#3d-model" 
+          scale="0.5 0.5 0.5" 
+          position="0 0 0" 
+          rotation="0 180 0">
+        </a-entity>
+      </a-marker>
 
-      <!-- Camera for AR.js -->
+      <!-- Камера для AR.js -->
       <a-entity camera></a-entity>
     </a-scene>
   </body>
